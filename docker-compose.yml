@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  aglio:
+    container_name: aglio
+    image: api-doc/node:dev
+    build:
+      context: .
+      dockerfile: ./infra/docker/node/Dockerfile
+      cache_from:
+        - api-doc/node:cache
+    ports:
+      - "3010:3000"
+    volumes:
+      - ./doc:/var/www/api-doc
+    tty: true
+    command: >
+      bash -c
+        "aglio -i md/index.md -o html/api_doc.html &&
+        aglio --theme-variables slate -i md/index.md -s -h 0.0.0.0"
+
+  drakov:
+    container_name: drakov
+    image: api-doc/node:dev
+    build:
+      context: .
+      dockerfile: ./infra/docker/node/Dockerfile
+      cache_from:
+        - api-doc/node:cache
+    ports:
+      - "3011:3001"
+    volumes:
+      - ./doc:/var/www/api-doc
+    tty: true
+    command: drakov -f "**/*.md" --public --watch --p 3001
