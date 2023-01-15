@@ -1,14 +1,40 @@
-# Create API Document Sample
+# name
+
+sample-api-doc
+
+## Overview
 
 This is API document sample.
 
-## How to
+## Getting Start
 
-1. git clone
+1. Clone the repository
 
-2. run make up command
+```
+$ git clone https://github.com/balista-yu/sample-api-doc.git
+```
 
-3. access to http://localhost:3010/
+2. Run docker compose
+```
+$ cd sample-api-doc
+$ make up
+```
+
+3. Access to http://localhost:3010/
+
+## Usage
+
+- Export API document HTML
+
+```
+$ make output-html
+```
+
+- Confirm API response
+
+```
+$ curl -i http://localhost:3011/users
+```
 
 ## Reference
 [api blueprint](https://apiblueprint.org/)
