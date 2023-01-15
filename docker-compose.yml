@@ -32,4 +32,4 @@ services:
     volumes:
       - ./doc:/var/www/api-doc
     tty: true
-    command: drakov -f "**/*.md" --public --watch --p 3001
+    command: drakov -f "**/*.md" --public true --watch --p 3001
