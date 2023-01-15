@@ -18,3 +18,5 @@ logs-watch:
 	docker compose logs --follow
 init:
 	docker compose up -d --build
+output-html:
+	docker compose exec aglio aglio -i md/index.md -o html/api_doc.html
