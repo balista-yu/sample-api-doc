@@ -3,12 +3,12 @@ version: '3.9'
 services:
   aglio:
     container_name: aglio
-    image: api-doc/node:dev
+    image: aglio/node:dev
     build:
       context: .
       dockerfile: ./infra/docker/node/Dockerfile
       cache_from:
-        - api-doc/node:cache
+        - aglio/node:cache
     ports:
       - "3010:3000"
     volumes:
@@ -21,12 +21,12 @@ services:
 
   drakov:
     container_name: drakov
-    image: api-doc/node:dev
+    image: drakov/node:dev
     build:
       context: .
       dockerfile: ./infra/docker/node/Dockerfile
       cache_from:
-        - api-doc/node:cache
+        - drakov/node:cache
     ports:
       - "3011:3001"
     volumes:
